@@ -3,9 +3,11 @@ import bodyparser from 'body-parser'
 import dotenv from 'dotenv'
 import routes from './routes'
 import mongoose from 'mongoose'
+import cors from 'cors'
 dotenv.config()
 
 const app = express()
+app.use(cors())
 
 mongoose.set('useCreateIndex', true)
 mongoose

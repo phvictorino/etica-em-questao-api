@@ -22,7 +22,11 @@ const find = async (req, res, next) => {
 const mountQuestions = async (req, res, next) => {
   try {
     let response = await Questions.find().limit(20)
-    return res.json(shuffleArray(response))
+    shuffleArray(response)
+    response.forEach(q => {
+      shuffleArray(q.options)
+    })
+    return res.json(response)
   } catch (error) {
     next(error)
   }
