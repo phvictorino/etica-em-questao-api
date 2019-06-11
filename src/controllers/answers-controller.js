@@ -9,4 +9,13 @@ const create = async (req, res, next) => {
   }
 }
 
-export default { create }
+const findOne = async (req, res, next) => {
+  try {
+    let response = await Answers.findOne({ _id: req.params.id })
+    return res.json(response)
+  } catch (error) {
+    next(error)
+  }
+}
+
+export default { create, findOne }
