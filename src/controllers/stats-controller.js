@@ -6,8 +6,10 @@ const findStats = async (req, res, next) => {
     let obj = {}
     obj.totalAnswers = await Answers.find().count()
     let result = await Answers.aggregate([{ $group: { total: { $sum: '$total' }, _id: 1 } }])
-    obj.media = (obj.totalAnswers / result[0].total)
+    console.log(result)
+    obj.media = (result[0].total / obj.totalAnswers)
     obj.totalQuestions = await Questions.find().count()
+    console.log(obj)
     return res.json(obj)
   } catch (error) {
     next(error)
