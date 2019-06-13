@@ -7,7 +7,12 @@ import cors from 'cors'
 dotenv.config()
 
 const app = express()
-app.use(cors())
+
+let corsOptions = {
+  origin: 'https://eeq-app.herokuapp.com'
+}
+
+app.use(cors(corsOptions))
 
 mongoose.set('useCreateIndex', true)
 mongoose
