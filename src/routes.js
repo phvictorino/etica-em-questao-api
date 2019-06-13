@@ -1,9 +1,11 @@
 import { Router } from 'express'
 import questions from './controllers/questions-controller'
 import answers from './controllers/answers-controller'
+import stats from './controllers/stats-controller'
 
 const router = Router()
 
+router.get('/stats', stats.findStats)
 router.get('/questions/answer', questions.mountQuestions)
 router.get('/questions', questions.find)
 router.post('/questions', questions.create)
